@@ -2,6 +2,10 @@ require 'docking_station'
 
 describe DockingStation do
 
+  def fill_station(station)
+    20.times { station.dock(bike) }
+  end
+
   let(:bike)    { Bike.new }
   let(:station) { DockingStation.new(capacity: 20) }
 
@@ -20,9 +24,18 @@ describe DockingStation do
 
   it "knows when it is full" do
     expect(station).not_to be_full
-    20.times { station.dock(bike) }
+    fill_station station
     expect(station).to be_full
   end
+
+  it "will not accept a Bike once it is full" do
+    fill_station station
+    expect{ station.dock(bike) }.to raise_error(RuntimeError, "Station is FULL, cannot accept Bike")
+  end
+
+  it "should provide a list of availible Bikes" do
+  end
+
 end
 
 
