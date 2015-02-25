@@ -1,4 +1,4 @@
-class Docking_station
+class DockingStation
 
   def initialize
     @bikes =  []
@@ -10,6 +10,10 @@ class Docking_station
 
   def dock(bike)
     @bikes << bike
+  end
+
+  def release_bike(bike)
+    @bikes.delete(bike)
   end
 
 end
