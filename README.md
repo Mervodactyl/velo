@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Boris Bikes one more time....
-
-Repeat of exercise to improve understanding, plus notation
-=======
 # velo, rawr, rawrrrr so very, very much
 
 Bike rental for the French Market. Oui oui
