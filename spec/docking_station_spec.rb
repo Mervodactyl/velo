@@ -2,12 +2,21 @@ require 'docking_station'
 
 describe DockingStation do
 
+<<<<<<< HEAD
   def fill_station(station) ## helper methods? 'code' written in the test file for readability and ease of use? in the same way we would use doubles?
     20.times { station.dock(bike) }  ## what is this? a hash? why is it written this way?
   end
 
   let(:bike)    { Bike.new }
   let(:station) { DockingStation.new(capacity: 20) } ## want to talk in person about this passing a hash as an argument...
+=======
+  def fill_station(station)
+    20.times { station.dock(bike) }
+  end
+
+  let(:bike)    { Bike.new }
+  let(:station) { DockingStation.new(capacity: 20) }
+>>>>>>> 01db682173323c23f9099a4dd1c8c1aaa0570e92
 
   it "is able to accept a Bike" do
     expect(station.bike_count).to eq(0)
@@ -24,12 +33,17 @@ describe DockingStation do
 
   it "knows when it is full" do
     expect(station).not_to be_full
+<<<<<<< HEAD
     fill_station station ## why not station.fill_station?
+=======
+    fill_station station
+>>>>>>> 01db682173323c23f9099a4dd1c8c1aaa0570e92
     expect(station).to be_full
   end
 
   it "will not accept a Bike once it is full" do
     fill_station station
+<<<<<<< HEAD
     # expect(lambda { station.dock(bike) }).to raise_error(RuntimeError, "Station is FULL, cannot accept Bike")
 # --- the lambda is removed once 'helper method' is used, why?
     expect{ station.dock(bike) }.to raise_error(RuntimeError, "Station is FULL, cannot accept Bike")
@@ -49,6 +63,21 @@ describe DockingStation do
   it "should provide a list of availible Bikes" do
   end
 
+=======
+    expect{ station.dock(bike) }.to raise_error(RuntimeError, "Station is FULL, cannot accept Bike")
+  end
+
+  it "should provide a list of availible Bikes" do
+    working_bike, broken_bike = Bike.new, Bike.new
+    broken_bike.break!
+    station.dock(working_bike)
+    station.dock(broken_bike)
+    expect(station.available_bikes).to eq([working_bike])
+  end
+
+
+
+>>>>>>> 01db682173323c23f9099a4dd1c8c1aaa0570e92
 end
 
 
